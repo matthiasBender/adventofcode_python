@@ -42,7 +42,7 @@ def was_mache_ich(my_input):
             koordinaten.append(startkoordinate)
 
         if element == "v":
-            startkoordinate = (z4, 0)
+            startkoordinate = (0, z4)
             z4 = z4 - 1
             koordinaten.append(startkoordinate)
 
