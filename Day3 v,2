@@ -1,0 +1,71 @@
+author: dasocker
+date: 28.10.22
+
+########### Day 3.2 Part I ##############
+
+#variable zum befüllen der Inputs von der Aufgabe
+inputs = "override me"
+
+#öffnet die textdatei mit den Inputs für Day3 & speichert diese in eine Variable "inputs"
+with open("day3.txt") as day3:
+    inputs = day3.read()
+
+#überprüfung ob die Inputs da sind, welchen type sie haben und wie lang die länge des datensatzes
+print(inputs)
+print((type(inputs)))
+print(len(inputs))
+
+#leere liste zum befüllen mit koordinaten
+koordinaten = []
+
+#funktion um für jeden input eine einzelne koordinate zu erstellen, welche in die leere liste eingefügt wird (als tuples)
+def was_mache_ich(my_input):
+    startkoordinate = (0, 0)
+    z1 = 1
+    z2 = 1
+    z3 = -1
+    z4 = -1
+    for element in my_input:
+        if element == "^":
+            startkoordinate = (0, z1)
+            z1 = z1 + 1
+            koordinaten.append(startkoordinate)
+
+        if element == ">":
+            startkoordinate = (z2, 0)
+            z2 = z2 + 1
+            koordinaten.append(startkoordinate)
+
+        if element == "<":
+            startkoordinate = (z3, 0)
+            z3 = z3 - 1
+            koordinaten.append(startkoordinate)
+
+        if element == "v":
+            startkoordinate = (z4, 0)
+            z4 = z4 - 1
+            koordinaten.append(startkoordinate)
+
+
+was_mache_ich(inputs)                           #ausführen der funktion
+
+#verlaufskontrolle
+print(koordinaten)
+print(len(koordinaten))
+
+
+#neue liste zum befüllen aller "doppelten" koordinaten, um doppelte auszusortieren
+pop_koords = []
+
+#funktion um doppelte koordinaten in die leere liste zu schreiben
+def entferne_doppelte_koordinaten(my_koord):
+    for element in my_koord:
+        if element not in pop_koords:                      
+            pop_koords.append(element)
+
+entferne_doppelte_koordinaten(koordinaten)      #ausführen der funktion
+
+#verlaufskontrolle
+print(pop_koords)
+print(len(pop_koords))
+
