@@ -20,31 +20,35 @@ koordinaten = []
 
 #funktion um für jeden input eine einzelne koordinate zu erstellen, welche in die leere liste eingefügt wird (als tuples)
 def was_mache_ich(my_input):
-    startkoordinate = (0, 0)
-    z1 = 1
-    z2 = 1
-    z3 = -1
-    z4 = -1
+    position = (0, 0)
+
     for element in my_input:
         if element == "^":
-            startkoordinate = (0, z1)
-            z1 = z1 + 1
-            koordinaten.append(startkoordinate)
+
+           a_position = (position[0], position[1] + 1)
+           position = (position[0], position[1] + 1)
+           koordinaten.append(a_position)
+
 
         if element == ">":
-            startkoordinate = (z2, 0)
-            z2 = z2 + 1
-            koordinaten.append(startkoordinate)
+
+            b_position = (position[0] + 1, position[1])
+            position = (position[0] + 1, position[1])
+            koordinaten.append(b_position)
+
 
         if element == "<":
-            startkoordinate = (z3, 0)
-            z3 = z3 - 1
-            koordinaten.append(startkoordinate)
+
+            c_position = (position[0] - 1, position[1])
+            position = (position[0] - 1, position[1])
+            koordinaten.append(c_position)
+
 
         if element == "v":
-            startkoordinate = (0, z4)
-            z4 = z4 - 1
-            koordinaten.append(startkoordinate)
+
+            d_position = (position[0], position[1] - 1)
+            position = (position[0], position[1] - 1)
+            koordinaten.append(d_position)
 
 
 was_mache_ich(inputs)                           #ausführen der funktion
