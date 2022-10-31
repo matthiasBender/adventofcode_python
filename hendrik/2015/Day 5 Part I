@@ -1,0 +1,81 @@
+# author : dasocker
+# date : 31.10.22
+
+############ Advent of Code: Year 2015, Day 5 - Part I #################
+
+
+list_of_strings = []
+
+with open("day5.txt") as day5:
+    for x in range(1000):
+        list_of_strings.append(day5.readline().strip("\n"))
+
+print(list_of_strings)                      #verlaufskontrolle
+print(len(list_of_strings))
+
+nice_strings = []
+
+def first_sorting(x):
+    for string in list_of_strings:
+        if string.find("ab") == True:
+            print("This is a Bad String: " + string)
+            continue
+        if string.find("cd") == True:
+            print("This is a Bad String: " + string)
+            continue
+        if string.find("pq") == True:
+            print("This is a Bad String: " + string)
+            continue
+        if string.find("xy") == True:
+            print("This is a Bad String: " + string)
+            continue
+        else:
+            counter = 0
+            for character in string:
+
+                if counter >= 3:
+                    nice_strings.append(string)
+                    break
+
+                if character == "a":
+                    counter = counter + 1
+                    continue
+                if character == "e":
+                    counter = counter + 1
+                    continue
+                if character == "i":
+                    counter = counter + 1
+                    continue
+                if character == "o":
+                    counter = counter + 1
+                    continue
+                if character == "u":
+                    counter = counter + 1
+                    continue
+
+nicer_strings = []
+
+def second_sorting(y):
+    equal = ""
+    for string in nice_strings:
+        for character in string:
+            if character == equal:
+                nicer_strings.append(string)
+                break
+            else:
+                equal = character
+
+
+
+first_sorting(list_of_strings)
+print("")
+print("Here comes the fist sorted Strings:")
+print("")
+print(nice_strings)
+print(len(nice_strings))
+second_sorting(nice_strings)
+
+print("Here after second Sorting:")
+
+print(nicer_strings)
+print(len(nicer_strings))
