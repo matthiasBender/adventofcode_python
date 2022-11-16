@@ -8,6 +8,7 @@ numpy = "*"
 requests = "*"
 bpython = "*"
 pycodestyle = "*"
+gmpy2 = "*"
 
 [dev-packages]
 requests = "*"
