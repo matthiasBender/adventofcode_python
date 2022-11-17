@@ -4,16 +4,12 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-numpy = "*"
-requests = "*"
-bpython = "*"
-pycodestyle = "*"
 gmpy2 = "*"
+numpy = "*"
 
 [dev-packages]
-requests = "*"
-numpy = "*"
 bpython = "*"
+pycodestyle = "*"
 
 [requires]
 python_version = "3.8"
