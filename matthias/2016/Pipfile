@@ -5,6 +5,7 @@ name = "pypi"
 
 [packages]
 numpy = "*"
+gmpy2 = "*"
 
 [dev-packages]
 bpython = "*"
