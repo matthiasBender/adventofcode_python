@@ -4,13 +4,9 @@ def read_input() -> list[tuple[str, str]]:
 
 
 def score_round(enemy: str, own: str) -> int:
-    result = 1 + ord(own) - ord("X")
-    e_num = 1 + ord(enemy) - ord("A")
-    if result == e_num:
-        return result + 3
-    elif result == e_num + 1 or result == e_num - 2:
-        return result + 6
-    return result
+    result = ord(own) - ord("X") + 1
+    e_num = ord(enemy) - ord("A")
+    return (result - e_num) % 3 * 3 + result
 
 
 input = read_input()
@@ -19,13 +15,8 @@ print("Solution 1:", sum(score_round(*i) for i in input))
 
 def score_round_related(enemy: str, own: str) -> int:
     e_num = ord(enemy) - ord("A")
-    match own:
-        case "X": 
-            return 0 + (e_num - 1) % 3 + 1
-        case "Y":
-            return 3 + e_num + 1
-        case "Z":
-            return 6 + (e_num + 1) % 3 + 1
+    s = ord(own) - ord("X")
+    return 3 * s + (e_num + s - 1) % 3 + 1
 
 
 print("Solution 2:", sum(score_round_related(*i) for i in input))
