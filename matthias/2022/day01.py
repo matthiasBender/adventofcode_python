@@ -1,4 +1,4 @@
-def read_input():
+def read_input() -> list[list[int]]:
     with open("day01.dat") as f:
         content = f.read()
         return [[int(y) for y in x.split("\n")] for x in content.split("\n\n") ]
