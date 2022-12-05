@@ -31,6 +31,7 @@ class Execution:
         "c": 0,
         "d": 0
     })
+    output_buffer: list[int] = field(default_factory=lambda: [])
 
     def execute_command(self):
         instruction = self.program[self.position]
@@ -49,6 +50,10 @@ class Execution:
                     self.position += self.deref(instruction.arg2) - 1
             case "tgl":
                 self.toggle_line(self.position - 1 + self.deref(instruction.arg1))
+            case "out":
+                self.output_buffer.append(self.deref(instruction.arg1))
+                return len(self.output_buffer)
+        return -1
 
     def optimized_inc(self, cmd: Command):
         # checking and optimizing for:
@@ -105,10 +110,11 @@ class Execution:
             return arg
         return self.registers[arg]
 
-    def run(self):
+    def run(self, max_output=1000):
         size = len(self.program)
         while self.position < size:
-            self.execute_command()
+            if self.execute_command() >= max_output:
+                return self.output_buffer
 
 
 def to_int(s: str) -> int | str:
