@@ -1,6 +1,6 @@
 import json
 from functools import cmp_to_key
-from pprint import pprint
+
 
 def read_input():
     with open("day13.dat") as f:
@@ -35,4 +35,4 @@ pairs = read_input()
 print("Solution 1:", sum(i + 1 for i in range(len(pairs)) if compare_lists(*pairs[i]) < 0))
 
 sorted_lists = sorted((x for pair in pairs + [([[2]], [[6]])] for x in pair), key=cmp_to_key(compare_lists))
-print((sorted_lists.index([[2]]) + 1) * (sorted_lists.index([[6]]) + 1))
+print("Solution 2:", (sorted_lists.index([[2]]) + 1) * (sorted_lists.index([[6]]) + 1))
