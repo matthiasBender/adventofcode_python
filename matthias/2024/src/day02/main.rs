@@ -8,11 +8,17 @@ fn main() {
         .iter()
         .filter(|&row| is_increasing(row) || is_decreasing(row))
         .count();
-    println!("Result 1: {result1} {:?}", Instant::now().duration_since(start_time1));
+    println!(
+        "Result 1: {result1} {:?}",
+        Instant::now().duration_since(start_time1)
+    );
 
     let start_time2 = Instant::now();
     let result2 = data.into_iter().filter(test_all).count();
-    println!("Result 2: {result2} {:?}", Instant::now().duration_since(start_time2))
+    println!(
+        "Result 2: {result2} {:?}",
+        Instant::now().duration_since(start_time2)
+    )
 }
 
 fn is_increasing(input: &Vec<u64>) -> bool {
